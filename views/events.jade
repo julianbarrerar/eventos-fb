@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  - timeConverter = function (UNIX_timestamp){ var a = new Date(UNIX_timestamp * 1000); var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; var year = a.getFullYear(); var month = months[a.getMonth()]; var date = a.getDate(); var hour = a.getHours(); var min = a.getMinutes(); var sec = a.getSeconds(); var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ; return time; }
+  
+  nav.navbar.navbar-inverse(role='navigation', style='padding-left:130px;')
+      ul.nav.navbar-nav
+        li.active
+          a(href='/')
+            | #{title}
+            span.sr-only (current)
+  
+  div.container
+    for item in events
+      div.row
+        div.col-xs-12.col-sm-12.col-xs-12.col-sm-12
+          h3.bg-primary.title-event= item.event
+            span= timeConverter(item.start_date) +" - "+ timeConverter(item.end_date)
+      if item.posts.length > 0
+        for subitem in item.posts
+          p
+            b|Id Post: 
+            spam| #{subitem.id}
+          p
+            b|Comments: 
+            spam| #{subitem.comments}
+          p
+            b|Message: 
+            spam| #{subitem.message}
+      else
+        div.not-event| No hay post para este evento
+      

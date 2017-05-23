@@ -1,0 +1,19 @@
+header{
+  background: url('../images/manzana.jpg');
+}
+
+.title-event{
+  padding: 15px;
+}
+
+h3.bg-primary.title-event span {
+    color: #224d71;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.not-event{
+  background: #e8e6e6;
+  padding: 15px;
+  color: #8c8787;
+}
